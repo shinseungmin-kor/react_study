@@ -1,28 +1,20 @@
 import React, { useEffect, useState } from 'react';
-
+import Counter from './components/counter';
  
 function App() {
-  const [count, setCount] = useState(0);
-  const [counted, setCounted] = useState(0);
+  const [buttonName, setButtonName] = useState('클릭')
 
-  useEffect(() => {
-    console.log(count)
-    console.log(counted)
-  },[count, counted])
-
-  useEffect(() => {
-    console.log('first rendering')
-  }, []);
- 
-  const increment = () => {
-    setCount(count + 1);
+  const clickButton = () => {
+    setButtonName('click')
   }
 
   return (
     <div className="App">
       <h1>hello</h1>
-      <button onClick={increment}>Click</button>
-      <button onClick={() => setCounted(counted + 1)}>Click2</button>
+      <Counter click="click" />
+      <Counter click={buttonName} />
+      <Counter />
+      <button onClick={clickButton}>Click</button>
     </div>
   );
 }
